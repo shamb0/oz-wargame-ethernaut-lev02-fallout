@@ -63,9 +63,9 @@ describe("Fallout attack1", () => {
 
         hDCFallout.connect( user1 );
 
-        await hDCFallout.allocate( { from:user1, value:10 } );
-        const user1s2bal = await hDCFallout.allocatorBalance( user1 );
-        expect(user1s2bal).to.eq( 0 );
+        // await hDCFallout.allocate( { from:user1, value:10 } );
+        // const user1s2bal = await hDCFallout.allocatorBalance( user1 );
+        // expect(user1s2bal).to.eq( 0 );
 
         // await hDCFallout.Fal1out({from:user1, value:15});
         // await hDCFallout.Fal1out( {from:user1} );

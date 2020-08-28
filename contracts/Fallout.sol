@@ -1,8 +1,9 @@
-pragma solidity ^0.6.12;
+pragma solidity ^0.4.24;
 
 import "@nomiclabs/buidler/console.sol";
-import '@openzeppelin/contracts/access/Ownable.sol';
-import '@openzeppelin/contracts/math/SafeMath.sol';
+
+import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
 contract Fallout is Ownable {
 
@@ -10,23 +11,23 @@ contract Fallout is Ownable {
   mapping (address => uint) allocations;
 
   /* constructor */
-  // function Fal1out() public payable {
-  //   owner = msg.sender;
-  //   allocations[owner] = msg.value;
-  //   console.log("Fallout.sol :: F(%s)::Val(%s)", msg.sender, msg.value );
-  // }
-
-  constructor() public payable Ownable() {
-    // _owner = address(msg.sender);
-    allocations[owner()] = msg.value;
+  function Fal1out() public payable {
+    owner = msg.sender;
+    allocations[owner] = msg.value;
+    console.log("Fallout.sol :: F(%s)::Val(%s)", msg.sender, msg.value );
   }
+
+//   constructor() public payable {
+//     owner = msg.sender;
+//     allocations[owner] = msg.value;
+//   }
 
   function allocate() public payable {
     allocations[msg.sender] = allocations[msg.sender].add(msg.value);
     console.log("Fallout.sol :: F(%s)::Val(%s)", msg.sender, msg.value );
   }
 
-  function sendAllocation(address payable allocator) public {
+  function sendAllocation(address allocator) public {
     require(allocations[allocator] > 0);
     allocator.transfer(allocations[allocator]);
   }
